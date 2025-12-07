@@ -1,27 +1,10 @@
-import { H as HYDRATION_ERROR, g as get_next_sibling, d as define_property, a as set_active_reaction, b as set_active_effect, i as is_array, c as active_effect, e as active_reaction, f as init_operations, h as get_first_child, j as HYDRATION_START, k as HYDRATION_END, l as hydration_failed, m as clear_text_content, o as array_from, p as effect_root, q as create_text, r as branch, t as push, u as component_context, v as pop, w as set, x as get, y as flush_sync, z as mutable_source, A as render, B as push$1, C as setContext, E as pop$1 } from "./index.js";
-let base = "";
-let assets = base;
-const initial = { base, assets };
-function override(paths) {
-  base = paths.base;
-  assets = paths.assets;
-}
-function reset() {
-  base = initial.base;
-  assets = initial.assets;
-}
-function set_assets(path) {
-  assets = initial.assets = path;
-}
+import { H as HYDRATION_ERROR, g as get_next_sibling, d as define_property, s as set_active_reaction, a as set_active_effect, i as is_array, b as active_effect, c as active_reaction, e as init_operations, f as get_first_child, h as HYDRATION_START, j as HYDRATION_END, k as hydration_failed, l as clear_text_content, m as array_from, n as effect_root, o as create_text, p as branch, q as push, r as component_context, t as pop, u as set, v as get, w as flush_sync, x as mutable_source, y as render, z as push$1, A as setContext, B as pop$1 } from "./index2.js";
+import "./environment.js";
 let public_env = {};
-let safe_public_env = {};
 function set_private_env(environment) {
 }
 function set_public_env(environment) {
   public_env = environment;
-}
-function set_safe_public_env(environment) {
-  safe_public_env = environment;
 }
 function hydration_mismatch(location) {
   {
@@ -405,12 +388,6 @@ function asClassComponent(component) {
   component_constructor.render = _render;
   return component_constructor;
 }
-let prerendering = false;
-function set_building() {
-}
-function set_prerendering() {
-  prerendering = true;
-}
 function Root($$payload, $$props) {
   push$1();
   let {
@@ -436,9 +413,10 @@ function Root($$payload, $$props) {
     Pyramid_0($$payload, {
       data: data_0,
       form,
+      params: page.params,
       children: ($$payload2) => {
         $$payload2.out += `<!---->`;
-        Pyramid_1($$payload2, { data: data_1, form });
+        Pyramid_1($$payload2, { data: data_1, form, params: page.params });
         $$payload2.out += `<!---->`;
       },
       $$slots: { default: true }
@@ -448,7 +426,7 @@ function Root($$payload, $$props) {
     $$payload.out += "<!--[!-->";
     const Pyramid_0 = constructors[0];
     $$payload.out += `<!---->`;
-    Pyramid_0($$payload, { data: data_0, form });
+    Pyramid_0($$payload, { data: data_0, form, params: page.params });
     $$payload.out += `<!---->`;
   }
   $$payload.out += `<!--]--> `;
@@ -460,20 +438,23 @@ function Root($$payload, $$props) {
 }
 const root = asClassComponent(Root);
 const options = {
-  app_dir: "_app",
   app_template_contains_nonce: false,
+  async: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
+  csrf_trusted_origins: [],
   embedded: false,
   env_public_prefix: "PUBLIC_",
   env_private_prefix: "",
+  hash_routing: false,
   hooks: null,
   // added lazily, via `get_hooks`
   preload_strategy: "modulepreload",
   root,
   service_worker: false,
+  service_worker_options: void 0,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="en" class="dark">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" data-theme="skeleton">\r\n		<div style="display: contents" class="h-full overflow-hidden">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
+    app: ({ head, body, assets, nonce, env }) => '<!DOCTYPE html>\r\n<html lang="en" class="dark">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets + '/favicon.png" />\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" data-theme="skeleton">\r\n		<div style="display: contents" class="h-full overflow-hidden">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -545,28 +526,33 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "10hniv1"
+  version_hash: "1viccqg"
 };
 async function get_hooks() {
-  return {};
+  let handle;
+  let handleFetch;
+  let handleError;
+  let handleValidationError;
+  let init;
+  let reroute;
+  let transport;
+  return {
+    handle,
+    handleFetch,
+    handleError,
+    handleValidationError,
+    init,
+    reroute,
+    transport
+  };
 }
 export {
-  assets as a,
-  base as b,
-  read_implementation as c,
-  options as d,
-  set_private_env as e,
-  prerendering as f,
+  set_public_env as a,
+  set_read_implementation as b,
+  set_manifest as c,
   get_hooks as g,
-  set_public_env as h,
-  set_safe_public_env as i,
-  set_read_implementation as j,
-  set_assets as k,
-  set_building as l,
-  set_manifest as m,
-  set_prerendering as n,
-  override as o,
+  options as o,
   public_env as p,
-  reset as r,
-  safe_public_env as s
+  read_implementation as r,
+  set_private_env as s
 };

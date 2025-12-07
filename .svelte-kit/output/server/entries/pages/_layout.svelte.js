@@ -1,5 +1,30 @@
-import { F as store_get, G as slot, I as unsubscribe_stores, E as pop, B as push } from "../../chunks/index.js";
-import { p as page } from "../../chunks/stores.js";
+import { C as getContext, D as store_get, E as slot, F as unsubscribe_stores, B as pop, z as push } from "../../chunks/index2.js";
+import "@sveltejs/kit/internal";
+import "../../chunks/exports.js";
+import "../../chunks/utils.js";
+import "@sveltejs/kit/internal/server";
+import "../../chunks/state.svelte.js";
+const getStores = () => {
+  const stores$1 = getContext("__svelte__");
+  return {
+    /** @type {typeof page} */
+    page: {
+      subscribe: stores$1.page.subscribe
+    },
+    /** @type {typeof navigating} */
+    navigating: {
+      subscribe: stores$1.navigating.subscribe
+    },
+    /** @type {typeof updated} */
+    updated: stores$1.updated
+  };
+};
+const page = {
+  subscribe(fn) {
+    const store = getStores().page;
+    return store.subscribe(fn);
+  }
+};
 function _layout($$payload, $$props) {
   push();
   var $$store_subs;
