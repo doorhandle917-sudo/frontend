@@ -1,4 +1,4 @@
-import{t as v,e as m,a as g}from"../chunks/disclose-version.CtUUFoU6.js";import{p as f,s as l,f as u,a as b,c as e,r as s}from"../chunks/runtime.-jlxGDdJ.js";import{i as h}from"../chunks/lifecycle.DN-r8DkL.js";import{g as y}from"../chunks/entry.B9_gkhER.js";var x=v(`<div class="
+import{t as v,e as m,a as g}from"../chunks/disclose-version.CtUUFoU6.js";import{p as f,s as l,f as u,a as b,c as e,r as s}from"../chunks/runtime.-jlxGDdJ.js";import{i as h}from"../chunks/lifecycle.DN-r8DkL.js";import{g as y}from"../chunks/entry.CtcTI2Du.js";var x=v(`<div class="
     min-h-screen
     w-full
     contrast-[200%]
