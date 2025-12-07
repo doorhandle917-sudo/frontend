@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyro Files | Restricted Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="screen">
+        <div class="monitor-effects">
+            <div class="scanlines"></div>
+            <div class="glare"></div>
+        </div>
+        
+        <div class="content">
+            <div class="header">
+                TOP SECRET // SKYRO PROTOCOL
+            </div>
+            
+            <div class="main-text">
+                <h1>SKYRO FILES</h1>
+                <h2 class="blink">COMING SOON<span id="secret-trigger">.</span></h2>
+            </div>
+
+            <div class="footer">
+                <p>SYSTEM INITIALIZING...</p>
+                <div class="loader">
+                    <div class="bar"></div>
+                </div>
+                <p class="small">UNAUTHORIZED ACCESS WILL BE LOGGED.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Easter Egg: Click the dot in "Coming Soon."
+        const trigger = document.getElementById('secret-trigger');
+        const body = document.body;
+        
+        trigger.addEventListener('click', () => {
+            body.classList.toggle('breach-mode');
+            if (body.classList.contains('breach-mode')) {
+                alert('⚠️ SECURITY BREACH DETECTED ⚠️');
+                console.log('Access granted to Level 5.');
+            }
+        });
+
+        // Konami Code
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let cursor = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[cursor]) {
+                cursor++;
+                if (cursor === konamiCode.length) {
+                    body.classList.add('party-mode');
+                    alert('🦄 PARTY MODE ACTIVATED 🦄');
+                    cursor = 0;
+                }
+            } else {
+                cursor = 0;
+            }
+        });
+    </script>
+</body>
+</html>
