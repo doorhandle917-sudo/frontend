@@ -44,37 +44,22 @@
     </div>
 
     <!-- Gallery -->
-    <div class="gallery-container">
-      {#if data.images.length === 0}
-        {#each data.images as image, i}
-          <button
-            class="photo-item"
-            style="transform: rotate({getRotation(i)}deg) translateX({getOffset(
-              i,
-            )}px);"
-            in:fade={{ duration: 500, delay: i * 100 }}
-            on:click={() => openImage(image)}
-            aria-label="View screenshot {i + 1}"
-          >
-            <img src={image} alt="Screenshot {i + 1}" class="photo-img" />
-          </button>
-        {/each}
-      {:else}
-        {#each data.images as image, i}
-          <button
-            class="photo-item"
-            style="transform: rotate({getRotation(i)}deg) translateX({getOffset(
-              i,
-            )}px);"
-            in:fade={{ duration: 500, delay: i * 100 }}
-            on:click={() => openImage(image)}
-            aria-label="View screenshot {i + 1}"
-          >
-            <img src={image} alt="Screenshot {i + 1}" class="photo-img" />
-          </button>
-        {/each}
-      {/if}
-    </div>
+<div class="gallery-container">
+  {#if images.length === 0}
+    <div class="empty-state">No screenshots found</div>
+  {:else}
+    {#each images as image, i}
+      <button
+        class="photo-item"
+        style="transform: rotate({getRotation(i)}deg) translateX({getOffset(i)}px);"
+        on:click={() => openImage(image)}
+        aria-label="View screenshot {i + 1}"
+      >
+        <img src={image} alt="Screenshot {i + 1}" class="photo-img" />
+      </button>
+    {/each}
+  {/if}
+</div>
 
     <!-- Page Down Button -->
     <div class="button-container">
